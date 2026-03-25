@@ -1,0 +1,60 @@
+=== MoE residual increment / energy mass (m@0.90), top_k=8 ===
+Model: /data1/nanjun.cp/Capacity-Aware-MoE/lm-evaluation-harness/models/OLMoE-1B-7B-0924
+Global m_needed: mean=4.6150 std=1.3210 p10=3.0000 p50=5.0000 p90=6.0000 (n=12256)
+
+--- (1) Same layer, across tokens: per-layer std of m_needed ---
+  Layer  0: m_mean=3.604 m_std=1.395 top1_E1_ratio_mean=0.559
+  Layer  1: m_mean=3.920 m_std=1.391 top1_E1_ratio_mean=0.553
+  Layer  2: m_mean=4.332 m_std=1.227 top1_E1_ratio_mean=0.491
+  Layer  3: m_mean=4.709 m_std=1.195 top1_E1_ratio_mean=0.456
+  Layer  4: m_mean=5.051 m_std=1.246 top1_E1_ratio_mean=0.428
+  Layer  5: m_mean=5.073 m_std=1.255 top1_E1_ratio_mean=0.436
+  Layer  6: m_mean=5.191 m_std=1.309 top1_E1_ratio_mean=0.423
+  Layer  7: m_mean=5.289 m_std=1.099 top1_E1_ratio_mean=0.399
+  Layer  8: m_mean=5.309 m_std=1.192 top1_E1_ratio_mean=0.418
+  Layer  9: m_mean=4.641 m_std=1.282 top1_E1_ratio_mean=0.480
+  Layer 10: m_mean=4.648 m_std=1.224 top1_E1_ratio_mean=0.475
+  Layer 11: m_mean=4.236 m_std=1.151 top1_E1_ratio_mean=0.490
+  Layer 12: m_mean=4.302 m_std=1.128 top1_E1_ratio_mean=0.486
+  Layer 13: m_mean=4.316 m_std=1.265 top1_E1_ratio_mean=0.499
+  Layer 14: m_mean=4.380 m_std=1.109 top1_E1_ratio_mean=0.446
+  Layer 15: m_mean=4.839 m_std=1.171 top1_E1_ratio_mean=0.456
+
+--- (2) Same sentence: m_needed(layer) at token positions ---
+seq_len=68 preview: "Goal: How do I ready a guinea pig cage for it's new occupants?\n(A) Provide the guinea pig with a cag"
+  pos   0: min=1.00 max=7.00 mean=1.88
+  pos   1: min=1.00 max=7.00 mean=4.50
+  pos   4: min=2.00 max=7.00 mean=4.50
+  pos   8: min=1.00 max=6.00 mean=4.75
+  pos  34: min=2.00 max=6.00 mean=4.19
+  pos  67: min=1.00 max=6.00 mean=3.25
+
+--- Aggregated ---
+  mean(per-layer std of m_needed): 1.227414
+  mean over pos of std(m_needed across layers): 1.212245
+
+--- Per-request stats (first 8 examples) ---
+  [#0] seq_len=68  m_mean=4.546  m_std=1.310  top1_E1_ratio_mean=0.472
+      PIQA label=0  goal: "How do I ready a guinea pig cage for it's new occupants?"
+      text: "Goal: How do I ready a guinea pig cage for it's new occupants? (A) Provide the guinea pig with a cage full of a few inches of bedding made o"...
+  [#1] seq_len=29  m_mean=4.575  m_std=1.427  top1_E1_ratio_mean=0.498
+      PIQA label=1  goal: 'dresser'
+      text: 'Goal: dresser (A) replace drawer with bobby pin (B) finish, woodgrain with  bobby pin'...
+  [#2] seq_len=52  m_mean=4.631  m_std=1.359  top1_E1_ratio_mean=0.473
+      PIQA label=1  goal: 'To fight Ivan Drago in Rocky for sega master system.'
+      text: "Goal: To fight Ivan Drago in Rocky for sega master system. (A) Drago isn't in this game because it was released before Rocky IV. (B) You hav"...
+  [#3] seq_len=37  m_mean=4.566  m_std=1.290  top1_E1_ratio_mean=0.475
+      PIQA label=1  goal: 'Make outdoor pillow.'
+      text: 'Goal: Make outdoor pillow. (A) Blow into tin can and tie with rubber band. (B) Blow into trash bag and tie with rubber band.'...
+  [#4] seq_len=35  m_mean=4.800  m_std=1.370  top1_E1_ratio_mean=0.460
+      PIQA label=0  goal: 'ice box'
+      text: 'Goal: ice box (A) will turn into a cooler if you add water to it (B) will turn into a cooler if you add soda to it'...
+  [#5] seq_len=40  m_mean=4.525  m_std=1.285  top1_E1_ratio_mean=0.477
+      PIQA label=1  goal: 'Remove soap scum from shower door.'
+      text: 'Goal: Remove soap scum from shower door. (A) Rub hard with bed sheets, then rinse. (B) Rub hard with dryer sheets, then rinse.'...
+  [#6] seq_len=61  m_mean=4.606  m_std=1.224  top1_E1_ratio_mean=0.453
+      PIQA label=1  goal: 'Recycle a spray bottle for a new cleaner.'
+      text: 'Goal: Recycle a spray bottle for a new cleaner. (A) Open the top of the empty spray bottle and check for damage. Rinse the bottle then fill '...
+  [#7] seq_len=64  m_mean=4.552  m_std=1.278  top1_E1_ratio_mean=0.465
+      PIQA label=0  goal: 'How do you attach toilet paper to a glass jar?'
+      text: 'Goal: How do you attach toilet paper to a glass jar? (A) Press a piece of double-sided tape to the glass jar and then press the toilet paper'...

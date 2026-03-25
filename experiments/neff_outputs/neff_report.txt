@@ -1,0 +1,35 @@
+=== N_eff routing experiment (baseline, no capacity drop) ===
+Model: lm-evaluation-harness/models/OLMoE-1B-7B-0924
+Global N_eff: mean=7.2553 std=1.0756 p10=6.7745 p50=7.5496 p90=7.8109 (n=1296)
+
+--- Insight (1): same layer, across tokens (per-layer N_eff std) ---
+  Layer  0: mean=7.0433 std=0.5658 p10=6.3695 p50=7.1450 p90=7.6516
+  Layer  1: mean=7.2053 std=0.4600 p10=6.5094 p50=7.3086 p90=7.7421
+  Layer  2: mean=6.9448 std=1.5080 p10=6.6504 p50=7.3535 p90=7.6710
+  Layer  3: mean=6.9666 std=1.3849 p10=6.6889 p50=7.3865 p90=7.7513
+  Layer  4: mean=7.1253 std=0.9845 p10=6.1671 p50=7.4193 p90=7.7007
+  Layer  5: mean=7.5889 std=0.2692 p10=7.2961 p50=7.6274 p90=7.8637
+  Layer  6: mean=7.5762 std=0.2312 p10=7.2663 p50=7.6138 p90=7.8319
+  Layer  7: mean=7.5648 std=0.2337 p10=7.1594 p50=7.6089 p90=7.8176
+  Layer  8: mean=7.3053 std=1.3694 p10=7.3087 p50=7.6998 p90=7.8526
+  Layer  9: mean=7.3205 std=1.1875 p10=7.2695 p50=7.6307 p90=7.8263
+  Layer 10: mean=7.2619 std=1.2566 p10=7.1543 p50=7.5932 p90=7.7815
+  Layer 11: mean=7.2478 std=1.2512 p10=6.8078 p50=7.6375 p90=7.8357
+  Layer 12: mean=7.1196 std=1.2998 p10=6.6552 p50=7.4851 p90=7.7468
+  Layer 13: mean=7.1126 std=1.4217 p10=7.0200 p50=7.4994 p90=7.7812
+  Layer 14: mean=7.2649 std=1.3089 p10=7.0468 p50=7.6531 p90=7.8452
+  Layer 15: mean=7.4360 std=0.3875 p10=7.1349 p50=7.5449 p90=7.7884
+
+--- Insight (2): same sentence, N_eff(layer) at selected token positions ---
+seq_len=17 preview: 'The mixture of experts architecture routes each token to a small subset of feedforward networks.'
+  pos   0: min=1.2398 max=7.8656 mean=4.1735
+  pos   1: min=7.1104 max=7.9001 mean=7.6195
+  pos   4: min=6.5431 max=7.8485 mean=7.5926
+  pos   8: min=6.8899 max=7.9670 mean=7.5898
+  pos  16: min=7.0784 max=7.8103 mean=7.5301
+
+--- Aggregated metrics ---
+  mean(per-layer std of N_eff over tokens): 0.944999
+  mean over positions of std(N_eff across layers): 0.492754
+
+  N_eff vs layer at pos=0 (low->high): ██░░████░░░░░░░█

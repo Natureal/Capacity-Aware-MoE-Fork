@@ -1,0 +1,33 @@
+=== MoE residual increment / energy mass (m@0.90), top_k=8 ===
+Model: lm-evaluation-harness/models/OLMoE-1B-7B-0924
+Global m_needed: mean=4.6366 std=1.4267 p10=3.0000 p50=5.0000 p90=6.0000 (n=1296)
+
+--- (1) Same layer, across tokens: per-layer std of m_needed ---
+  Layer  0: m_mean=3.728 m_std=1.532 top1_E1_ratio_mean=0.578
+  Layer  1: m_mean=4.049 m_std=1.571 top1_E1_ratio_mean=0.562
+  Layer  2: m_mean=4.346 m_std=1.500 top1_E1_ratio_mean=0.522
+  Layer  3: m_mean=4.444 m_std=1.432 top1_E1_ratio_mean=0.492
+  Layer  4: m_mean=4.679 m_std=1.647 top1_E1_ratio_mean=0.476
+  Layer  5: m_mean=5.444 m_std=1.122 top1_E1_ratio_mean=0.403
+  Layer  6: m_mean=5.049 m_std=1.456 top1_E1_ratio_mean=0.421
+  Layer  7: m_mean=5.383 m_std=0.897 top1_E1_ratio_mean=0.384
+  Layer  8: m_mean=5.148 m_std=1.406 top1_E1_ratio_mean=0.419
+  Layer  9: m_mean=4.580 m_std=1.360 top1_E1_ratio_mean=0.504
+  Layer 10: m_mean=4.593 m_std=1.331 top1_E1_ratio_mean=0.468
+  Layer 11: m_mean=4.531 m_std=1.458 top1_E1_ratio_mean=0.497
+  Layer 12: m_mean=4.148 m_std=1.278 top1_E1_ratio_mean=0.471
+  Layer 13: m_mean=4.543 m_std=1.207 top1_E1_ratio_mean=0.478
+  Layer 14: m_mean=4.420 m_std=1.195 top1_E1_ratio_mean=0.454
+  Layer 15: m_mean=5.099 m_std=0.924 top1_E1_ratio_mean=0.413
+
+--- (2) Same sentence: m_needed(layer) at token positions ---
+seq_len=17 preview: 'The mixture of experts architecture routes each token to a small subset of feedforward networks.'
+  pos   0: min=1.00 max=7.00 mean=1.94
+  pos   1: min=3.00 max=6.00 mean=5.06
+  pos   4: min=3.00 max=7.00 mean=5.31
+  pos   8: min=2.00 max=7.00 mean=5.25
+  pos  16: min=1.00 max=6.00 mean=4.62
+
+--- Aggregated ---
+  mean(per-layer std of m_needed): 1.332259
+  mean over pos of std(m_needed across layers): 1.215572
